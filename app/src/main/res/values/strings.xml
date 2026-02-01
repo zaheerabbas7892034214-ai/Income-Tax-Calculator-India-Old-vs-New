@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Income Tax Calculator India</string>
+    <string name="splash_title">Income Tax Calculator</string>
+    <string name="splash_subtitle">Old vs New Regime</string>
+    
+    <!-- Home Screen -->
+    <string name="select_financial_year">Select Financial Year</string>
+    <string name="calculate_tax">Calculate Tax</string>
+    
+    <!-- Income Inputs -->
+    <string name="income_inputs">Income Inputs</string>
+    <string name="basic_salary">Basic Salary (₹)</string>
+    <string name="hra">HRA (₹)</string>
+    <string name="other_allowances">Other Allowances (₹)</string>
+    <string name="other_income">Other Income (₹)</string>
+    <string name="next">Next</string>
+    
+    <!-- Deductions -->
+    <string name="deductions">Deductions (Old Regime)</string>
+    <string name="section_80c">Section 80C (₹)</string>
+    <string name="section_80d">Section 80D (₹)</string>
+    <string name="standard_deduction">Standard Deduction</string>
+    <string name="calculate">Calculate</string>
+    
+    <!-- Results -->
+    <string name="tax_comparison">Tax Comparison</string>
+    <string name="old_regime">Old Regime</string>
+    <string name="new_regime">New Regime</string>
+    <string name="tax_payable">Tax Payable</string>
+    <string name="effective_tax_rate">Effective Tax Rate</string>
+    <string name="recommended">Recommended</string>
+    <string name="export_pdf">Export PDF</string>
+    <string name="save_profile">Save Profile</string>
+    
+    <!-- Profiles -->
+    <string name="profiles">Profiles</string>
+    <string name="no_profiles">No saved profiles</string>
+    <string name="profile_name">Profile Name</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    
+    <!-- Paywall -->
+    <string name="upgrade_to_pro">Upgrade to Pro</string>
+    <string name="pro_features">Pro Features</string>
+    <string name="pro_feature_1">Export PDF reports</string>
+    <string name="pro_feature_2">Save multiple profiles</string>
+    <string name="pro_feature_3">Year-wise comparison</string>
+    <string name="purchase_now">Purchase Now - ₹199</string>
+    <string name="restore_purchase">Restore Purchase</string>
+    
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="clear_all_profiles">Clear All Profiles</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="about">About</string>
+    
+    <!-- Disclaimer -->
+    <string name="disclaimer_title">Disclaimer</string>
+    <string name="disclaimer_text">This app provides tax calculations for informational purposes only. It is not a substitute for professional tax advice. Please consult a tax professional for legal advice.</string>
+    <string name="accept">Accept</string>
+    
+    <!-- Messages -->
+    <string name="pro_feature_locked">This is a Pro feature. Upgrade to unlock.</string>
+    <string name="purchase_successful">Purchase successful! Pro features unlocked.</string>
+    <string name="purchase_failed">Purchase failed. Please try again.</string>
+    <string name="export_successful">PDF exported successfully</string>
+    <string name="profile_saved">Profile saved successfully</string>
+    <string name="profiles_cleared">All profiles cleared</string>
+    
+    <!-- Common -->
+    <string name="back">Back</string>
+    <string name="close">Close</string>
+    <string name="loading">Loading...</string>
+    <string name="error">Error</string>
+</resources>
