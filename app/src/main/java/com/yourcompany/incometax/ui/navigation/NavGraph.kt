@@ -40,13 +40,7 @@ fun NavGraph(
         startDestination = startDestination
     ) {
         composable(Screen.Splash.route) {
-            SplashScreen(
-                onNavigateToHome = {
-                    navController.navigate(Screen.Home.route) {
-                        popUpTo(Screen.Splash.route) { inclusive = true }
-                    }
-                }
-            )
+            SplashScreen(navController = navController)
         }
 
         composable(Screen.Home.route) {
@@ -101,10 +95,18 @@ fun NavGraph(
         }
 
         composable(Screen.Export.route) {
+            val selectedYear by homeViewModel.selectedFinancialYear.collectAsState()
+            val incomeInputs = incomeViewModel.getTaxInputs()
+            val finalInputs = deductionViewModel.applyDeductions(incomeInputs)
+            
             ExportScreen(
-                onBack = {
+                inputs = finalInputs,
+                financialYear = selectedYear,
+                onExportComplete = { success, message ->
+                    // Handle export completion
                     navController.popBackStack()
-                }
+                },
+                resultViewModel = resultViewModel
             )
         }
 
@@ -117,9 +119,9 @@ fun NavGraph(
 
         composable(Screen.Settings.route) {
             SettingsScreen(
-                onBack = {
-                    navController.popBackStack()
-                }
+                navController = navController,
+                billingViewModel = billingViewModel,
+                profileViewModel = profileViewModel
             )
         }
     }
