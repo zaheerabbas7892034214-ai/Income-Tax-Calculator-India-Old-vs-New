@@ -8,4 +8,13 @@ data class TaxInputs(
     val otherIncome: Double = 0.0,
     val section80C: Double = 0.0,
     val section80D: Double = 0.0
-)
+) {
+    val totalIncome: Double
+        get() = basicSalary + hra + otherAllowances + otherIncome
+    
+    val standardDeduction: Double
+        get() = 50000.0
+    
+    val section80Deductions: Double
+        get() = section80C + section80D
+}

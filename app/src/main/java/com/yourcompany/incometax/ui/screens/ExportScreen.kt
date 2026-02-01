@@ -25,25 +25,31 @@ fun ExportScreen(
     val context = LocalContext.current
     var exportStatus by remember { mutableStateOf<ExportStatus>(ExportStatus.Idle) }
     
+    var selectedUri by remember { mutableStateOf<Uri?>(null) }
+    
     val createDocumentLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.CreateDocument("application/pdf")
     ) { uri: Uri? ->
         if (uri != null) {
+            selectedUri = uri
             exportStatus = ExportStatus.Exporting
-            LaunchedEffect(Unit) {
-                try {
-                    resultViewModel.exportPdf(context, inputs, financialYear)
-                    delay(500)
-                    exportStatus = ExportStatus.Success
-                    onExportComplete(true, "PDF exported successfully")
-                } catch (e: Exception) {
-                    exportStatus = ExportStatus.Error(e.message ?: "Export failed")
-                    onExportComplete(false, e.message ?: "Export failed")
-                }
-            }
         } else {
             exportStatus = ExportStatus.Cancelled
             onExportComplete(false, "Export cancelled")
+        }
+    }
+    
+    LaunchedEffect(selectedUri) {
+        selectedUri?.let {
+            try {
+                resultViewModel.exportPdf(context, inputs, financialYear)
+                delay(500)
+                exportStatus = ExportStatus.Success
+                onExportComplete(true, "PDF exported successfully")
+            } catch (e: Exception) {
+                exportStatus = ExportStatus.Error(e.message ?: "Export failed")
+                onExportComplete(false, e.message ?: "Export failed")
+            }
         }
     }
     
