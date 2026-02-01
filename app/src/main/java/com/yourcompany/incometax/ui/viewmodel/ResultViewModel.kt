@@ -27,15 +27,16 @@ class ResultViewModel : ViewModel() {
     
     fun calculateTax(inputs: TaxInputs) {
         viewModelScope.launch {
-            withContext(Dispatchers.Default) {
+            val (oldResult, newResult, recommendation) = withContext(Dispatchers.Default) {
                 val oldResult = TaxCalculator.calculateOldRegime(inputs)
                 val newResult = TaxCalculator.calculateNewRegime(inputs)
                 val recommendation = TaxCalculator.getRecommendedRegime(oldResult, newResult)
-                
-                _oldRegimeResult.value = oldResult
-                _newRegimeResult.value = newResult
-                _recommendedRegime.value = recommendation
+                Triple(oldResult, newResult, recommendation)
             }
+            
+            _oldRegimeResult.value = oldResult
+            _newRegimeResult.value = newResult
+            _recommendedRegime.value = recommendation
         }
     }
     
