@@ -46,20 +46,18 @@ class ResultViewModel : ViewModel() {
             val newResult = _newRegimeResult.value
             
             if (oldResult != null && newResult != null) {
-                withContext(Dispatchers.IO) {
-                    val uri = PdfExporter.exportToPdf(
+                val uri = withContext(Dispatchers.IO) {
+                    PdfExporter.exportToPdf(
                         context = context,
                         inputs = inputs,
                         oldResult = oldResult,
                         newResult = newResult,
                         financialYear = financialYear
                     )
-                    
-                    if (uri != null) {
-                        withContext(Dispatchers.Main) {
-                            PdfExporter.sharePdf(context, uri)
-                        }
-                    }
+                }
+                
+                if (uri != null) {
+                    PdfExporter.sharePdf(context, uri)
                 }
             }
         }
